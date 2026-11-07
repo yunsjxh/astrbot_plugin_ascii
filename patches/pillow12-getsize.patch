@@ -1,0 +1,86 @@
+diff --git a/img2img.py b/img2img.py
+index 0693610..2d162b0 100644
+--- a/img2img.py
++++ b/img2img.py
+@@ -41,7 +41,8 @@ def main(opt):
+         cell_height = 12
+         num_cols = int(width / cell_width)
+         num_rows = int(height / cell_height)
+-    char_width, char_height = font.getsize(sample_character)
++    _l, _t, _r, _b = font.getbbox(sample_character)
++    char_width, char_height = _r - _l, _b - _t
+     out_width = char_width * num_cols
+     out_height = scale * char_height * num_rows
+     out_image = Image.new("L", (out_width, out_height), bg_code)
+diff --git a/img2img_color.py b/img2img_color.py
+index 86a0768..9599674 100644
+--- a/img2img_color.py
++++ b/img2img_color.py
+@@ -43,7 +43,8 @@ def main(opt):
+         cell_height = 12
+         num_cols = int(width / cell_width)
+         num_rows = int(height / cell_height)
+-    char_width, char_height = font.getsize(sample_character)
++    _l, _t, _r, _b = font.getbbox(sample_character)
++    char_width, char_height = _r - _l, _b - _t
+     out_width = char_width * num_cols
+     out_height = scale * char_height * num_rows
+     out_image = Image.new("RGB", (out_width, out_height), bg_code)
+diff --git a/utils.py b/utils.py
+index b1ea6d9..5a941f7 100644
+--- a/utils.py
++++ b/utils.py
+@@ -4,15 +4,20 @@ from PIL import Image, ImageFont, ImageDraw, ImageOps
+ 
+ def sort_chars(char_list, font, language):
+     if language == "chinese":
+-        char_width, char_height = font.getsize("制")
++        _l, _t, _r, _b = font.getbbox("制")
++        char_width, char_height = _r - _l, _b - _t
+     elif language == "korean":
+-        char_width, char_height = font.getsize("ㅊ")
++        _l, _t, _r, _b = font.getbbox("ㅊ")
++        char_width, char_height = _r - _l, _b - _t
+     elif language == "japanese":
+-        char_width, char_height = font.getsize("あ")
++        _l, _t, _r, _b = font.getbbox("あ")
++        char_width, char_height = _r - _l, _b - _t
+     elif language in ["english", "german", "french", "spanish", "italian", "portuguese", "polish"]:
+-        char_width, char_height = font.getsize("A")
++        _l, _t, _r, _b = font.getbbox("A")
++        char_width, char_height = _r - _l, _b - _t
+     elif language == "russian":
+-        char_width, char_height = font.getsize("A")
++        _l, _t, _r, _b = font.getbbox("A")
++        char_width, char_height = _r - _l, _b - _t
+     num_chars = min(len(char_list), 100)
+     out_width = char_width * len(char_list)
+     out_height = char_height
+diff --git a/video2video.py b/video2video.py
+index c546987..e7268ed 100644
+--- a/video2video.py
++++ b/video2video.py
+@@ -57,7 +57,8 @@ def main(opt):
+             cell_height = 12
+             num_cols = int(width / cell_width)
+             num_rows = int(height / cell_height)
+-        char_width, char_height = font.getsize("A")
++        _l, _t, _r, _b = font.getbbox("A")
++        char_width, char_height = _r - _l, _b - _t
+         out_width = char_width * num_cols
+         out_height = 2 * char_height * num_rows
+         out_image = Image.new("L", (out_width, out_height), bg_code)
+diff --git a/video2video_color.py b/video2video_color.py
+index d40754d..da0ab03 100644
+--- a/video2video_color.py
++++ b/video2video_color.py
+@@ -57,7 +57,8 @@ def main(opt):
+             cell_height = 12
+             num_cols = int(width / cell_width)
+             num_rows = int(height / cell_height)
+-        char_width, char_height = font.getsize("A")
++        _l, _t, _r, _b = font.getbbox("A")
++        char_width, char_height = _r - _l, _b - _t
+         out_width = char_width * num_cols
+         out_height = 2 * char_height * num_rows
+         out_image = Image.new("RGB", (out_width, out_height), bg_code)

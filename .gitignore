@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+*.swp
+
+# Local secrets and logs
+.env
+*.log
+
+# Files produced by the plugin at runtime
+ascii_result.jpg
+ascii_source.jpg
+ascii_recent_input.jpg
+
+# Build artifacts
+build/
+dist/

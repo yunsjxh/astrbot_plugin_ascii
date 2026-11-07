@@ -1,0 +1,77 @@
+astrbot_plugin_ascii
+====================
+
+This repository contains only the AstrBot plugin. It does NOT bundle any
+source code, font, or demo asset from ASCII-generator. At runtime the plugin
+launches the separately installed upstream scripts as a local subprocess.
+See docs/SETUP.md for how to install and connect the upstream project.
+
+
+1. Upstream project: ASCII-generator
+------------------------------------
+
+    https://github.com/vietnh1009/ASCII-generator
+    Tested revision: d69701624e05573ce1670caa0fa27b4b192d7b13 (2024-11-22)
+    License: MIT
+    Copyright (c) 2018 Viet Nguyen
+
+The upstream MIT license text is reproduced below, as required when using
+software distributed under that license.
+
+    MIT License
+
+    Copyright (c) 2018 Viet Nguyen
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+A small compatibility patch for Pillow >= 10 (ImageFont.getsize -> getbbox)
+is provided in patches/pillow12-getsize.patch. It is meant to be applied to
+your own copy of the upstream repository and is offered under the same MIT
+terms as this plugin.
+
+
+2. Font
+-------
+
+The upstream scripts load fonts/DejaVuSansMono-Bold.ttf by relative path.
+That font belongs to the DejaVu Fonts project (https://dejavu-fonts.github.io/)
+and is distributed under the permissive DejaVu Fonts License (derived from the
+Bitstream Vera license with public-domain additions). It is NOT included in
+this repository; you obtain it when you install ASCII-generator.
+
+Commercial CJK fonts present in the upstream repository (simsun.ttc,
+arial-unicode.ttf) were deliberately NOT installed and are NOT redistributed
+here. This plugin always passes --language english.
+
+
+3. QQ avatars
+-------------
+
+Avatar images are fetched at runtime from https://q1.qlogo.cn/ (a Tencent
+service) and are not redistributed as part of this project. The images under
+assets/ are a publicly available default QQ avatar and its locally generated
+ASCII-art rendering, included solely as documentation examples.
+
+
+4. Third-party platforms
+------------------------
+
+This plugin targets AstrBot (v4) with the aiocqhttp adapter and NapCat. Those
+projects are separate works with their own licenses; this repository does not
+include any of their code.

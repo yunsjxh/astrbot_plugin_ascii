@@ -1,0 +1,10 @@
+name: astrbot_plugin_ascii
+display_name: ASCII 字符画
+short_desc: 图片 / QQ 头像一键转 ASCII 字符画
+desc: 支持附带图片、@成员或 QQ 号头像、单发指令回溯最近图片；基于 vietnh1009/ASCII-generator。
+version: v1.1.0
+author: yunsjxh
+repo: https://github.com/yunsjxh/astrbot_plugin_ascii
+support_platforms:
+  - aiocqhttp
+astrbot_version: ">=4.0"

@@ -1,0 +1,56 @@
+{
+  "num_cols": {
+    "description": "字符画宽度（列数）",
+    "type": "int",
+    "hint": "越大越精细，建议 60~150；上限 300",
+    "default": 100
+  },
+  "recent_image_ttl": {
+    "description": "单发指令时回溯最近图片的秒数",
+    "type": "int",
+    "hint": "单独发 /ascii 或 /字符画（不带图）时，取同一会话内这个人在这段时间内发过的最近一张图；默认 60 秒，设为 0 关闭，上限 600",
+    "default": 60
+  },
+  "fix_aspect_ratio": {
+    "description": "修正字符画比例失真",
+    "type": "bool",
+    "hint": "上游脚本会把图案横向拉宽约 1.6 倍；开启时预拉伸输入图来抵消，输出保持大尺寸、字符清晰且不压扁",
+    "default": true
+  },
+  "keep_original_size": {
+    "description": "把输出缩回原图像素尺寸",
+    "type": "bool",
+    "hint": "默认关闭以保持字符清晰；开启后输出与输入同宽高，小图上的字符会比较糊",
+    "default": false
+  },
+  "color": {
+    "description": "输出彩色字符画",
+    "type": "bool",
+    "hint": "关闭时为黑白字符画",
+    "default": false
+  },
+  "white_background": {
+    "description": "白底黑字",
+    "type": "bool",
+    "hint": "关闭时为黑底白字",
+    "default": false
+  },
+  "timeout": {
+    "description": "单次转换超时（秒）",
+    "type": "int",
+    "hint": "大图可适当调大",
+    "default": 30
+  },
+  "generator_dir": {
+    "description": "ASCII-generator 安装目录",
+    "type": "string",
+    "hint": "脚本与 fonts/ 所在目录，运行时会以此作为工作目录",
+    "default": "/opt/ASCII-generator"
+  },
+  "python_path": {
+    "description": "用于转换的 Python 解释器",
+    "type": "string",
+    "hint": "需要已安装 numpy / opencv / Pillow",
+    "default": "/opt/AstrBot/venv/bin/python"
+  }
+}
